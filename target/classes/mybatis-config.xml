@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration> 
+	<!-- DB 테이블과 컬럼들을 mapper 매핑을 위한 변수 선언 -->
+	<properties>
+		<!-- 
+		* property
+		- name : mapper.xml에서 사용될 이름
+		- value : DB테이블 및 컬럼 이름
+		-->
+		<property name="board" value="board"/>
+		<property name="boardSeq" value="board_seq"/>
+		<property name="title" value="title"/>
+		<property name="content" value="content"/>
+		<property name="userId" value="user_id"/>
+		<property name="replyCount" value="reply_count"/>
+		<property name="regDate" value="reg_date"/>
+	</properties>
+</configuration>
