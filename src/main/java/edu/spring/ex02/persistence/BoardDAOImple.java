@@ -57,8 +57,8 @@ public class BoardDAOImple implements BoardDAO {
 
 	@Override
 	public int getTotalNums() {
-		// TODO Auto-generated method stub
-		return 0;
+		LOGGER.info("getTotalNum() 호출");
+		return sqlSession.selectOne(NAMESPACE + ".total_count");
 	}
 
 	@Override

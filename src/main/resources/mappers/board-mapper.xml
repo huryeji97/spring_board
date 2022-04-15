@@ -32,4 +32,9 @@
 		delete from ${board}
 		where ${boardSeq} = #{boardSeq}
 	</delete>
+	
+	<select id="total_count" resultType="Integer">
+		select count(*) as total_count
+		from ${board}
+	</select>
 </mapper>
