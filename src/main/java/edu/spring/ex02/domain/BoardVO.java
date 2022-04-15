@@ -11,9 +11,7 @@ public class BoardVO {
 	
 	public BoardVO() { }
 	
-	
 	public BoardVO(int boardSeq, String title, String content, String userId, Date regDate) {
-		super();
 		this.boardSeq = boardSeq;
 		this.title = title;
 		this.content = content;

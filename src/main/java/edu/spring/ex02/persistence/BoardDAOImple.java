@@ -33,8 +33,8 @@ public class BoardDAOImple implements BoardDAO {
 
 	@Override
 	public BoardVO select(int boardSeq) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("select() 호출 : boardSeq = " + boardSeq);
+		return sqlSession.selectOne(NAMESPACE + ".select_by_board_seq", boardSeq);
 	}
 
 	@Override

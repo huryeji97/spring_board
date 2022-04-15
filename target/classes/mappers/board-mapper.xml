@@ -17,7 +17,14 @@
 	</insert>
 	
 	<select id="select_all" resultType="BoardVO">
-		select * from ${board}
+		select * 
+		from ${board}
 		order by ${boardSeq} desc
+	</select>
+	
+	<select id="select_by_board_seq" resultType="BoardVO">
+		select * 
+		from ${board}
+		where ${boardSeq} = #{boardSeq}
 	</select>
 </mapper>

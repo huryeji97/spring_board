@@ -19,7 +19,7 @@
 	
 	<!-- 
 	* typeAliases
-	: mapper.xml의 select 리턴타입에 들어갈 클래스 경로 설
+	: mapper.xml의 select 리턴타입에 들어갈 클래스 경로 설정
 	-->
 	<typeAliases>
 		<package name="edu.spring.ex02.domain"/>

@@ -26,11 +26,12 @@ public class BoardDAOTest {
 	@Test
 	public void testDAO() {
 //		testInsert();
-		testSelectAll();
+//		testSelectAll();
+		testSelectByBoardSeq();
 	}
 	
 	private void testInsert() {
-		BoardVO vo = new BoardVO(0,"test", "test", "admin", null);
+		BoardVO vo = new BoardVO(0, "test", "test", "admin", null);
 		int result = dao.insert(vo);
 		if(result == 1) {
 			LOGGER.info("insert 성공");
@@ -44,5 +45,10 @@ public class BoardDAOTest {
 		for(BoardVO vo:list) {
 			LOGGER.info(vo.toString());
 		}
+	}
+	
+	private void testSelectByBoardSeq() {
+		BoardVO vo = dao.select(2);
+		LOGGER.info(vo.toString());
 	}
 }
