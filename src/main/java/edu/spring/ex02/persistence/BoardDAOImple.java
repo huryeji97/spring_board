@@ -51,8 +51,8 @@ public class BoardDAOImple implements BoardDAO {
 
 	@Override
 	public List<BoardVO> select(PageCriteria c) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("select()호출 : PageCriteria = " + c);
+		return sqlSession.selectList(NAMESPACE + ".paging", c);
 	}
 
 	@Override

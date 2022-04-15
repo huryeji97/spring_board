@@ -34,12 +34,12 @@ public class PageCriteria {
 		this.numsPerPage = numsPerPage;
 	}
 	
-	// 현재 보여지는 페이지의 시작 글 일련번호(rn)
+	// 현재 보여지는 페이지의 시작 글 일련번호
 	public int getStart() {
-		return (this.page - 1) * this.numsPerPage + 1;
+		return (this.page - 1) * this.numsPerPage;
 	}
 	
-	// 현재 보여지는 페이지의 마지막 글 일련번호(rn)
+	// 현재 보여지는 페이지의 마지막 글 일련번호
 	public int getEnd() {
 		return this.page * this.numsPerPage;
 	}	

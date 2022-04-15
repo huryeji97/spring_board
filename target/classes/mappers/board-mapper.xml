@@ -37,4 +37,12 @@
 		select count(*) as total_count
 		from ${board}
 	</select>
+	
+	<select id="paging" resultType="BoardVO">
+		select ${boardSeq}, ${title}, ${content}, ${userId}, ${regDate} 
+		from ${board}
+		order by ${boardSeq} desc
+		limit #{start}, #{end}
+	</select>
+	
 </mapper>

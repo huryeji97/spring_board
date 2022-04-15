@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import edu.spring.ex02.domain.BoardVO;
+import edu.spring.ex02.pageutil.PageCriteria;
 import edu.spring.ex02.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,7 +30,8 @@ public class BoardDAOTest {
 //		testSelectAll();
 //		testSelectByBoardSeq();
 //		testDelete();
-		testTotalCount();
+//		testTotalCount();
+		testSelectPaging();
 	}
 	
 	private void testInsert() {
@@ -61,6 +63,14 @@ public class BoardDAOTest {
 	
 	private void testTotalCount() {
 		LOGGER.info(dao.getTotalNums() + "rows");
+	}
+
+	private void testSelectPaging() {
+		PageCriteria criteria = new PageCriteria(1, 5);
+		List<BoardVO> list = dao.select(criteria);
+		for(BoardVO vo : list) {
+			LOGGER.info(vo.toString());
+		}
 	}
 
 
