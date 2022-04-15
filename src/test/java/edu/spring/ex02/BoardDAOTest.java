@@ -1,5 +1,7 @@
 package edu.spring.ex02;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,17 +25,24 @@ public class BoardDAOTest {
 	
 	@Test
 	public void testDAO() {
-		testInsert();
+//		testInsert();
+		testSelectAll();
 	}
 	
 	private void testInsert() {
-		BoardVO vo = new BoardVO(0, "test", "test", "admin", null);
+		BoardVO vo = new BoardVO(0,"test", "test", "admin", null);
 		int result = dao.insert(vo);
 		if(result == 1) {
 			LOGGER.info("insert 성공");
 		} else {
-			LOGGER.info("insert 실");
+			LOGGER.info("insert 실패");
 		}
 	}
 
+	private void testSelectAll() {
+		List<BoardVO> list = dao.select();
+		for(BoardVO vo:list) {
+			LOGGER.info(vo.toString());
+		}
+	}
 }

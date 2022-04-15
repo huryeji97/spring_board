@@ -15,4 +15,9 @@
 		insert into ${board} (${title}, ${content}, ${userId})
 		values (#{title}, #{content}, #{userId})
 	</insert>
+	
+	<select id="select_all" resultType="BoardVO">
+		select * from ${board}
+		order by ${boardSeq} desc
+	</select>
 </mapper>
