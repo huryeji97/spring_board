@@ -27,7 +27,8 @@ public class BoardDAOTest {
 	public void testDAO() {
 //		testInsert();
 //		testSelectAll();
-		testSelectByBoardSeq();
+//		testSelectByBoardSeq();
+		testDelete();
 	}
 	
 	private void testInsert() {
@@ -51,4 +52,10 @@ public class BoardDAOTest {
 		BoardVO vo = dao.select(2);
 		LOGGER.info(vo.toString());
 	}
+	
+	private void testDelete() {
+		int result = dao.delete(2);
+		LOGGER.info(result + "행 삭제");
+	}
+
 }

@@ -27,4 +27,9 @@
 		from ${board}
 		where ${boardSeq} = #{boardSeq}
 	</select>
+	
+	<delete id="delete">
+		delete from ${board}
+		where ${boardSeq} = #{boardSeq}
+	</delete>
 </mapper>

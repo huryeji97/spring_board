@@ -45,8 +45,8 @@ public class BoardDAOImple implements BoardDAO {
 
 	@Override
 	public int delete(int boardSeq) {
-		// TODO Auto-generated method stub
-		return 0;
+		LOGGER.info("delete() 호출 : boardSeq = " + boardSeq);
+		return sqlSession.delete(NAMESPACE + ".delete", boardSeq);
 	}
 
 	@Override
