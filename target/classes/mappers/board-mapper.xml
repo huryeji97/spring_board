@@ -11,38 +11,52 @@
 - sqlSession의 함수(insert, selectOne, selectList, update, delete)에 맞게 수행되는 태그
 -->
 <mapper namespace="edu.spring.ex02.BoardMapper">
+	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into ${board} (${title}, ${content}, ${userId})
 		values (#{title}, #{content}, #{userId})
 	</insert>
 	
-	<select id="select_all" resultType="BoardVO">
-		select * 
-		from ${board}
+	<!-- 페이지 처리한 게시글 목록 -->
+	<!--select_all의 리턴타입은 원래 List<BoardVO>이지만, 데이터 컬럼만 보았을 때는 VO타이다. -->
+	<select id="select_all_paging" resultType="BoardVO">
+		select ${boardSeq}
+			   , ${title}
+			   , ${content}
+			   , ${userId}
+			   , ${regDate} 
+		  from ${board}
 		order by ${boardSeq} desc
+		limit #{start}, #{end}
 	</select>
 	
+	<!-- 선택한 boardSeq 게시글 보 -->
 	<select id="select_by_board_seq" resultType="BoardVO">
 		select * 
-		from ${board}
-		where ${boardSeq} = #{boardSeq}
+		  from ${board}
+		 where ${boardSeq} = #{boardSeq}
 	</select>
 	
+	<!-- 게시글 수 -->
+	<update id="update">
+		update ${board}
+		   set ${title} = #{title}
+			   , ${content} = #{content}
+		 where ${boardSeq} = #{boardSeq}
+	</update>
+	
+	<!-- 게시글 삭제 -->
 	<delete id="delete">
 		delete from ${board}
 		where ${boardSeq} = #{boardSeq}
 	</delete>
 	
+	<!-- 전체 게시글 수 -->
 	<select id="total_count" resultType="Integer">
 		select count(*) as total_count
 		from ${board}
 	</select>
 	
-	<select id="paging" resultType="BoardVO">
-		select ${boardSeq}, ${title}, ${content}, ${userId}, ${regDate} 
-		from ${board}
-		order by ${boardSeq} desc
-		limit #{start}, #{end}
-	</select>
+	
 	
 </mapper>

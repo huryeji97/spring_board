@@ -26,11 +26,11 @@ public class BoardDAOImple implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> select() {
-		LOGGER.info("select() 호출");
-		return sqlSession.selectList(NAMESPACE + ".select_all");
+	public List<BoardVO> select(PageCriteria c) {
+		LOGGER.info("select() 호출 : PageCriteria = " + c);
+		return sqlSession.selectList(NAMESPACE + ".select_all_paging", c);
 	}
-
+	
 	@Override
 	public BoardVO select(int boardSeq) {
 		LOGGER.info("select() 호출 : boardSeq = " + boardSeq);
@@ -39,8 +39,8 @@ public class BoardDAOImple implements BoardDAO {
 
 	@Override
 	public int update(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		LOGGER.info("update() 호출 : vo = " + vo);
+		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
 
 	@Override
@@ -50,26 +50,8 @@ public class BoardDAOImple implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> select(PageCriteria c) {
-		LOGGER.info("select()호출 : PageCriteria = " + c);
-		return sqlSession.selectList(NAMESPACE + ".paging", c);
-	}
-
-	@Override
 	public int getTotalNums() {
-		LOGGER.info("getTotalNum() 호출");
+		LOGGER.info("getTotalNums() 호출");
 		return sqlSession.selectOne(NAMESPACE + ".total_count");
-	}
-
-	@Override
-	public List<BoardVO> select(String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BoardVO> selectByTitleOrContent(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -27,7 +27,6 @@ public class BoardDAOTest {
 	@Test
 	public void testDAO() {
 //		testInsert();
-//		testSelectAll();
 //		testSelectByBoardSeq();
 //		testDelete();
 //		testTotalCount();
@@ -43,17 +42,18 @@ public class BoardDAOTest {
 			LOGGER.info("insert 실패");
 		}
 	}
-
-	private void testSelectAll() {
-		List<BoardVO> list = dao.select();
-		for(BoardVO vo:list) {
-			LOGGER.info(vo.toString());
-		}
-	}
 	
 	private void testSelectByBoardSeq() {
 		BoardVO vo = dao.select(2);
 		LOGGER.info(vo.toString());
+	}
+	
+	private void testSelectPaging() {
+		PageCriteria criteria = new PageCriteria(1, 5);
+		List<BoardVO> list = dao.select(criteria);
+		for(BoardVO vo : list) {
+			LOGGER.info(vo.toString());
+		}
 	}
 	
 	private void testDelete() {
@@ -64,14 +64,4 @@ public class BoardDAOTest {
 	private void testTotalCount() {
 		LOGGER.info(dao.getTotalNums() + "rows");
 	}
-
-	private void testSelectPaging() {
-		PageCriteria criteria = new PageCriteria(1, 5);
-		List<BoardVO> list = dao.select(criteria);
-		for(BoardVO vo : list) {
-			LOGGER.info(vo.toString());
-		}
-	}
-
-
 }
