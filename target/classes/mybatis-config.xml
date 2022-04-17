@@ -17,6 +17,11 @@
 		<property name="regDate" value="reg_date"/>
 	</properties>
 	
+	<!-- Underscore 명명법을 Camel 명명법으로 매핑 -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
 	<!-- 
 	* typeAliases
 	: mapper.xml의 select 리턴타입에 들어갈 클래스 경로 설정

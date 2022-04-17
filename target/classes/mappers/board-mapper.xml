@@ -56,7 +56,4 @@
 		select count(*) as total_count
 		from ${board}
 	</select>
-	
-	
-	
 </mapper>
