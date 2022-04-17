@@ -5,42 +5,40 @@ package edu.spring.ex02.pageutil;
 // -> paging 처리에 필요한 start와 end 번호를 알 수 있음
 public class PageCriteria {
 	private int page; // 현재 페이지 번호
-	private int numsPerPage; // 한 페이지의 게시글 개수
+	private int perPageNum; // 한 페이지의 게시글 갯수
 	
 	public PageCriteria() {
 		this.page = 1;
-		this.numsPerPage = 5;
+		this.perPageNum = 10;
 	}
 	
-	public PageCriteria(int page, int numsPerPage) {
-		this.page = page;
-		this.numsPerPage = numsPerPage;
-	}
+	// 특정 페이지의 게시글 시작번호, 게시글 시작 행 번호
+	public int getPageStart() { 
+        return (this.page - 1) * perPageNum;
+    }
+    
+    public int getPage() {
+        return page;
+    }
 
-	// getter setter
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
-	}
-
-	public int getNumsPerPage() {
-		return numsPerPage;
-	}
-
-	public void setNumsPerPage(int numsPerPage) {
-		this.numsPerPage = numsPerPage;
-	}
-	
-	// 현재 보여지는 페이지의 시작 글 일련번호
-	public int getStart() {
-		return (this.page - 1) * this.numsPerPage;
-	}
-	
-	// 현재 보여지는 페이지의 마지막 글 일련번호
-	public int getEnd() {
-		return this.page * this.numsPerPage;
-	}	
+    public void setPage(int page) {
+        if(page <= 0) {
+            this.page = 1;
+        } else {
+            this.page = page;
+        }
+    }
+    
+    public int getPerPageNum() {
+        return perPageNum;
+    }
+    
+    public void setPerPageNum(int pageCount) {
+        int count = this.perPageNum;
+        if(pageCount != count) {
+            this.perPageNum = count;
+        } else {
+            this.perPageNum = pageCount;
+        }
+    }
 }

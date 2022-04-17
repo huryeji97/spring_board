@@ -27,7 +27,11 @@
 			   , ${regDate} 
 		  from ${board}
 		order by ${boardSeq} desc
-		limit #{start}, #{end}
+		limit #{pageStart}, #{perPageNum}
+		<!--
+		* pageStart : 특정 페이지의 첫번째 게시글 행
+		* perPageNum : 한 페이지당 보여줄 게시글의 갯
+		-->
 	</select>
 	
 	<!-- 선택한 boardSeq 게시글 보 -->

@@ -27,8 +27,8 @@ public class BoardController {
 	
 	// 글목록 list
 	@GetMapping("/list")
-	public void list(Model model, Integer page, Integer perPage) { // perPage : 한페이지에 표시될 글의 갯수
-		LOGGER.info("list() 호출 : page = " + page + ", perPage = " + perPage);
+	public void list(Model model, Integer page, Integer perPageNum) { // perPageNum : 한페이지에 표시될 글의 갯수
+		LOGGER.info("list() 호출 : page = " + page + ", perPageNum = " + perPageNum);
 		
 		// Paging 처리
 		PageCriteria c = new PageCriteria();
@@ -36,18 +36,17 @@ public class BoardController {
 		if(page != null) {
 			c.setPage(page);
 		}
-		if(perPage != null) {
-			c.setNumsPerPage(perPage);
+		if(perPageNum != null) {
+			c.setPerPageNum(perPageNum);
 		}
-		
-		List<BoardVO> list = boardService.read(c);
-		model.addAttribute("list", list);
 		
 		PageMaker maker = new PageMaker();
 		maker.setCriteria(c);
 		maker.setTotalCount(boardService.getTotalNums());
-		maker.setPageData();
 		model.addAttribute("maker", maker);
+		
+		List<BoardVO> list = boardService.read(c);
+		model.addAttribute("list", list);
 	} // end list()
 	
 	// 글 작성 register - 페이지 GET방식

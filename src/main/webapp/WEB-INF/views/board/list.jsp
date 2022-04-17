@@ -54,15 +54,14 @@ li {
 	
 	<hr>
 	<ul>
-		<c:if test="${pageMaker.hasPrev }">
-			<li><a href="list?page=${pageMaker.startPageNo - 1}">이전</a></li>
+		<c:if test="${maker.hasPrev }">
+			<li><a href="list?page=${maker.startPageNo - 1}">이전</a></li>
 		</c:if>
-		<c:forEach begin="${pageMaker.startPageNo }" 
-		end="${pageMaker.endPageNo}" var="num">
+		<c:forEach begin="${maker.startPageNo }" end="${maker.endPageNo}" var="num">
 			<li><a href="list?page=${num }">${num }</a></li>
 		</c:forEach>
-		<c:if test="${pageMaker.hasNext }">
-			<li><a href="list?page=${pageMaker.endPageNo + 1}">다음</a></li>
+		<c:if test="${maker.hasNext && maker.endPage > 0}">
+			<li><a href="list?page=${maker.endPageNo + 1}">다음</a></li>
 		</c:if>
 	</ul>
 	
